@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_beginer_class/23_12_20/model/star.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../service/get_random_color.dart';
 
@@ -40,6 +42,16 @@ class _StarWidgetState extends State<StarWidget> {
     '유튜브 썸네일들이 하나같이 예술이다.',
   ];
 
+  static String youtubeId = 'CCXLFhIp6Uo';
+
+  final YoutubePlayerController _con = YoutubePlayerController(
+    initialVideoId: youtubeId,
+    flags: const YoutubePlayerFlags(
+      autoPlay: true,
+      mute: false,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +63,9 @@ class _StarWidgetState extends State<StarWidget> {
               child: Image.network(widget.star.imageUrl),
             ),
             profileArea(),
+            YoutubePlayer(
+              controller: _con,
+            ),
             miscellaneousArea(miscellaneous),
           ],
         ),
@@ -111,7 +126,7 @@ class _StarWidgetState extends State<StarWidget> {
                 padding: const EdgeInsets.all(8.0),
                 height: 80,
                 // color: getRandomColor(),
-                child: Text('Entry ${entries[index]}'),
+                child: Text(entries[index]),
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
