@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'screen/youtube_box_screen.dart';
+
 void main() {
-  runApp(MyYoutubeApp());
+  runApp(const MyYoutubeApp());
 }
 
 class MyYoutubeApp extends StatelessWidget {
@@ -9,6 +11,9 @@ class MyYoutubeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return const MaterialApp(
+      title: 'uiclone youtube',
+      home: YoutubeBoxScreen(),
+    );
   }
 }

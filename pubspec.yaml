@@ -62,8 +62,17 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/youtube/icon-youtube-256.png
+    - assets/images/youtube/icon-youtube-512.png
+    - assets/images/youtube/icon-youtube-black-256.png
+    - assets/images/youtube/icon-youtube-black-512.png
+    - assets/images/youtube/icon-youtube-red-256.png
+    - assets/images/youtube/icon-youtube-red-512.png
+    - assets/images/youtube/icon-youtube-shorts-256.png
+    - assets/images/youtube/icon-youtube-shorts-512.png
+    - assets/images/youtube/icon-youtube-shorts-black-256.png
+    - assets/images/youtube/icon-youtube-shorts-black-512.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
