@@ -12,12 +12,12 @@ class YoutubeDumpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('youtube dump Screen'),
+      ),
       body: Center(
-        child: Hero(
-          tag: 'dump Screen $tapId',
-          child: Image.network(
-              'https://i.namu.wiki/i/jY0H_ZiQ6yTt_BwnP91tdkHtoJ57WjLf2QPxif7bbyTxKtkdc3_WrFDmB0AuNHZB-kuGOjzMJ4nFA-z8TshEkhlmmxiQnV9GNfAZRUML8mzk8Rq9mT_j4sZEtcFXX37kxmIQVKSj5VWCAopxmJQ2tA.webp'),
-        ),
+        child: Image.network(
+            'https://i.namu.wiki/i/jY0H_ZiQ6yTt_BwnP91tdkHtoJ57WjLf2QPxif7bbyTxKtkdc3_WrFDmB0AuNHZB-kuGOjzMJ4nFA-z8TshEkhlmmxiQnV9GNfAZRUML8mzk8Rq9mT_j4sZEtcFXX37kxmIQVKSj5VWCAopxmJQ2tA.webp'),
       ),
     );
   }
