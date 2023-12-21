@@ -34,6 +34,26 @@ class YoutubeBoxScreen extends StatelessWidget {
             children: [
               TopbarWidget(userInfo: userInfo),
               CategoryWidget(categories: categories),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const YoutubeDumpScreen(
+                        tapId: 1,
+                      ),
+                      // fullscreenDialog: true,
+                    ),
+                  );
+                },
+                child: IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    // TODO: Favorite 버튼을 눌렀을 때의 동작 정의
+                    print('touched 3333');
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -62,8 +82,10 @@ class YoutubeBoxScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const YoutubeDumpScreen(),
-                    fullscreenDialog: true,
+                    builder: (context) => const YoutubeDumpScreen(
+                      tapId: 1,
+                    ),
+                    // fullscreenDialog: true,
                   ),
                 );
               },
@@ -71,6 +93,7 @@ class YoutubeBoxScreen extends StatelessWidget {
                 icon: Icon(Icons.add),
                 onPressed: () {
                   // TODO: Favorite 버튼을 눌렀을 때의 동작 정의
+                  print('touched 3333');
                 },
               ),
             ),
