@@ -54,12 +54,6 @@ class YoutubeBoxScreen extends StatelessWidget {
                   shorts: youtubeShorts,
                 ),
               ),
-              // ListView.builder(
-              //   scrollDirection: Axis.horizontal,
-              //   itemCount: youtubeShorts.length,
-              //   itemBuilder: ((context, index) {}),
-              // ),
-              // VideoListWidget(videos: youtubeVideos),
             ],
           ),
         ),

@@ -59,9 +59,9 @@ class _VideoListWidgetState extends State<VideoListWidget> {
       scrollDirection: Axis.vertical,
       itemCount: youtubeVideos.length,
       itemBuilder: (context, index) {
-        return index == 1
+        return index == shortIndex
             ? Container(
-                height: 400,
+                height: 370,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: youtubeShorts.length,
@@ -87,30 +87,40 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                                 size: 30,
                               ),
                             ),
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      '${youtubeShorts[index].title} test',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Container(
+                                        width: 180,
+                                        child: Text(
+                                          youtubeShorts[index].title,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                        ),
                                       ),
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                    ),
-                                    Text(
-                                      '조회수 ${formatViewCount(youtubeShorts[index].viewCount)}',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '조회수 ${formatViewCount(youtubeShorts[index].viewCount)}',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -120,98 +130,101 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                   }),
                 ),
               )
-            : Column(
-                children: [
-                  Image.network(
-                    youtubeVideos[index].thumnail,
-                    fit: BoxFit.cover,
-                  ),
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundImage: NetworkImage(
-                            'https://i.namu.wiki/i/cvGl4ZNRAlsZmBVZtVs_Iar9IuP42IExjHcEoc_Z2YdOx8M4ZsUleqFQJrNmQcNS87QpFbzNvti1GrmoGsNeR2z6SZyd25MCQM_9SirDrufw5KBFSalgTZQjH1VUf1LzJpsvF9t-0eQ9Xg9yh-lIfA.webp'),
-                      ),
-                      const SizedBox(
-                        width: 8.0,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                youtubeVideos[index].title,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
+            : Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 8.0),
+                child: Column(
+                  children: [
+                    Image.network(
+                      youtubeVideos[index].thumnail,
+                      fit: BoxFit.cover,
+                    ),
+                    Row(
+                      children: [
+                        const CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(
+                              'https://i.namu.wiki/i/cvGl4ZNRAlsZmBVZtVs_Iar9IuP42IExjHcEoc_Z2YdOx8M4ZsUleqFQJrNmQcNS87QpFbzNvti1GrmoGsNeR2z6SZyd25MCQM_9SirDrufw5KBFSalgTZQjH1VUf1LzJpsvF9t-0eQ9Xg9yh-lIfA.webp'),
+                        ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  youtubeVideos[index].title,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
                                 ),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                              Row(
-                                children: [
-                                  youtubeVideos[index].uploadId.length > 20
-                                      ? SizedBox(
-                                          width: 200,
-                                          child: Text(
+                                Row(
+                                  children: [
+                                    youtubeVideos[index].uploadId.length > 20
+                                        ? SizedBox(
+                                            width: 200,
+                                            child: Text(
+                                              youtubeVideos[index].uploadId,
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.white54,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                            ),
+                                          )
+                                        : Text(
                                             youtubeVideos[index].uploadId,
                                             style: const TextStyle(
                                               fontSize: 14,
                                               color: Colors.white54,
                                             ),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
                                           ),
-                                        )
-                                      : Text(
-                                          youtubeVideos[index].uploadId,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.white54,
-                                          ),
-                                        ),
-                                  const Text(
-                                    ' · ',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white54,
+                                    const Text(
+                                      ' · ',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white54,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    formatViewCount(
-                                        youtubeVideos[index].viewCount),
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white54,
+                                    Text(
+                                      formatViewCount(
+                                          youtubeVideos[index].viewCount),
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white54,
+                                      ),
                                     ),
-                                  ),
-                                  const Text(
-                                    ' · ',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white54,
+                                    const Text(
+                                      ' · ',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white54,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    formatUploadDate(
-                                        youtubeVideos[index].uploadTime),
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white54,
+                                    Text(
+                                      formatUploadDate(
+                                          youtubeVideos[index].uploadTime),
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white54,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               );
       },
     );
