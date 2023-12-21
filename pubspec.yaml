@@ -73,7 +73,11 @@ flutter:
     - assets/images/youtube/icon-youtube-shorts-512.png
     - assets/images/youtube/icon-youtube-shorts-black-256.png
     - assets/images/youtube/icon-youtube-shorts-black-512.png
-  #   - images/a_dot_ham.jpeg
+  fonts:
+  - family: D2Coding
+    fonts:
+      - asset: assets/fonts/D2Coding-Ver1.3.2-20180524.ttf
+      - asset: assets/fonts/D2CodingBold-Ver1.3.2-20180524.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
