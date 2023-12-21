@@ -13,61 +13,66 @@ class BottomNavigatorWidget extends StatefulWidget {
 }
 
 class _BottomNavigatorWidgetState extends State<BottomNavigatorWidget> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      height: 60.0,
-      color: Colors.black87,
-      shape: const CircularNotchedRectangle(),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              // TODO: Home 버튼을 눌렀을 때의 동작 정의
-            },
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: _selectedIndex,
+      backgroundColor: Colors.black87,
+      onTap: _onItemTapped,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            color: Colors.white,
           ),
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              // TODO: Search 버튼을 눌렀을 때의 동작 정의
-            },
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
+            color: Colors.white,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const YoutubeDumpScreen(
-                    tapId: 1,
-                  ),
-                  // fullscreenDialog: true,
-                ),
-              );
-            },
-            child: IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () {
-                // TODO: Favorite 버튼을 눌렀을 때의 동작 정의
-                print('touched 3333');
-              },
-            ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.add,
+            color: Colors.white,
           ),
-          IconButton(
-            icon: Icon(Icons.subscriptions_outlined),
-            onPressed: () {
-              // TODO: Favorite 버튼을 눌렀을 때의 동작 정의
-            },
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.subscriptions_outlined,
+            color: Colors.white,
           ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              // TODO: Person 버튼을 눌렀을 때의 동작 정의
-            },
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
+            color: Colors.white,
           ),
-        ],
+          label: '',
+        ),
+      ],
+    );
+  }
+
+  void _onItemTapped(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => YoutubeDumpScreen(selectIndex: index),
       ),
     );
+  }
+
+  void _onExploreTapped() {
+    // Handle tap action for Explore
+    print('Explore tapped!');
   }
 }
