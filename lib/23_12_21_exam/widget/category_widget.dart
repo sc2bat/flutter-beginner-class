@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beginer_class/23_12_21_exam/model/youtube_category.dart';
 
-class CategoryWidget extends StatelessWidget {
+class CategoryWidget extends StatefulWidget {
   const CategoryWidget({
     super.key,
     required this.categories,
@@ -12,66 +12,88 @@ class CategoryWidget extends StatelessWidget {
   final List<YoutubeCategory> categories;
 
   @override
+  State<CategoryWidget> createState() => _CategoryWidgetState();
+}
+
+class _CategoryWidgetState extends State<CategoryWidget> {
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 60,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 2.0,
-                    ),
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  child: const Icon(
-                    Icons.explore,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                ),
-              ),
-              ...categories.map((e) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      width: e.categoryName.trim().length * 20 < 70
-                          ? 70
-                          : e.categoryName.trim().length * 20,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(14.0)),
-                        color: e.categoryChoice == 1
-                            ? Colors.white
-                            : Colors.black45,
-                      ),
-                      child: Center(
-                        child: Text(
-                          e.categoryName,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: e.categoryChoice == 0
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                height: 60,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.categories.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            for (int i = 0; i < widget.categories.length; i++) {
+                              widget.categories[i].categoryChoice =
+                                  i == index ? 1 : 0;
+                            }
+                          });
+                        },
+                        child: Container(
+                          width: widget.categories[index].categoryName ==
+                                  'explorer'
+                              ? 60
+                              : widget.categories[index].categoryName
+                                              .trim()
+                                              .length *
+                                          20 <
+                                      70
+                                  ? 70
+                                  : widget.categories[index].categoryName
+                                          .trim()
+                                          .length *
+                                      20,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(14.0)),
+                            color: widget.categories[index].categoryChoice == 1
                                 ? Colors.white
-                                : Colors.black,
+                                : Colors.black45,
+                          ),
+                          child: Center(
+                            child: widget.categories[index].categoryName ==
+                                    'explorer'
+                                ? Icon(
+                                    Icons.explore,
+                                    color: widget.categories[index]
+                                                .categoryChoice ==
+                                            0
+                                        ? Colors.white
+                                        : Colors.black,
+                                    size: 30,
+                                  )
+                                : Text(
+                                    widget.categories[index].categoryName,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: widget.categories[index]
+                                                  .categoryChoice ==
+                                              0
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ],
-          ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -1,8 +1,12 @@
 import '../model/youtube_category.dart';
-import '../model/youtube_user.dart';
 
 class CategoryRepository {
   final List<YoutubeCategory> categories = [
+    YoutubeCategory(
+      categoryId: 0,
+      categoryName: 'explorer',
+      categoryChoice: 0,
+    ),
     YoutubeCategory(
       categoryId: 1,
       categoryName: '전체',
