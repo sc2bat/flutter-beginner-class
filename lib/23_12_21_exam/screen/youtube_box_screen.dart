@@ -30,11 +30,11 @@ class YoutubeBoxScreen extends StatelessWidget {
 
     String formatViewCount(int viewCount) {
       if (viewCount >= 100000000) {
-        return '${(viewCount / 100000000).toStringAsFixed(0)} 억 회';
+        return '${(viewCount / 100000000).toStringAsFixed(0)}억회';
       } else if (viewCount >= 10000) {
-        return '${(viewCount / 10000).toStringAsFixed(0)} 만 회';
+        return '${(viewCount / 10000).toStringAsFixed(0)}만회';
       } else if (viewCount >= 1000) {
-        return '${(viewCount / 1000).toStringAsFixed(0)} 천 회';
+        return '${(viewCount / 1000).toStringAsFixed(0)}천회';
       } else {
         return '$viewCount 회';
       }
@@ -75,6 +75,9 @@ class YoutubeBoxScreen extends StatelessWidget {
                               backgroundImage: NetworkImage(
                                   'https://i.namu.wiki/i/cvGl4ZNRAlsZmBVZtVs_Iar9IuP42IExjHcEoc_Z2YdOx8M4ZsUleqFQJrNmQcNS87QpFbzNvti1GrmoGsNeR2z6SZyd25MCQM_9SirDrufw5KBFSalgTZQjH1VUf1LzJpsvF9t-0eQ9Xg9yh-lIfA.webp'),
                             ),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -92,9 +95,30 @@ class YoutubeBoxScreen extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          videos[index].uploadId,
-                                          style: const TextStyle(
+                                        videos[index].uploadId.length > 20
+                                            ? SizedBox(
+                                                width: 200,
+                                                child: Text(
+                                                  videos[index].uploadId,
+                                                  style: const TextStyle(
+                                                    fontSize: 14,
+                                                    color: Colors.white54,
+                                                  ),
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 1,
+                                                ),
+                                              )
+                                            : Text(
+                                                videos[index].uploadId,
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.white54,
+                                                ),
+                                              ),
+                                        const Text(
+                                          ' · ',
+                                          style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.white54,
                                           ),
@@ -103,6 +127,13 @@ class YoutubeBoxScreen extends StatelessWidget {
                                           formatViewCount(
                                               videos[index].viewCount),
                                           style: const TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.white54,
+                                          ),
+                                        ),
+                                        const Text(
+                                          ' · ',
+                                          style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.white54,
                                           ),
