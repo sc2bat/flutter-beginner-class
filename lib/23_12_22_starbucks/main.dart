@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'widget/banner_title_widget.dart';
 import 'widget/bottom_navigation_bar_widget.dart';
 import 'widget/my_star_bucks_fix_app_bar_widget.dart';
-import 'widget/my_star_bucks_fix_app_bar_widget_bak.dart';
 import 'widget/my_star_bucks_top_widget.dart';
 import 'widget/news_card_list_widget.dart';
 import 'widget/quick_order_card_list_widget.dart';
