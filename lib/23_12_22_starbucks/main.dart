@@ -21,11 +21,68 @@ class MyStarBucksApp extends StatelessWidget {
               floating: false,
               delegate: MyStarBucksTopWidget(expandedHeight: 200.0),
             ),
-            const SliverPersistentHeader(
+            const SliverAppBar(
               pinned: true,
               floating: false,
-              delegate: MyStarBucksFixAppBarWidget(expandedHeight: 200.0),
+              expandedHeight: 60.0,
+              // backgroundColor: Colors.amber,
+              title: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.mail_outlined,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 8.0,
+                        ),
+                        Text(
+                          'What\'s New',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 16.0,
+                        ),
+                        Icon(
+                          Icons.movie_filter,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 8.0,
+                        ),
+                        Text(
+                          'Coupon',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.notifications_none,
+                          size: 30,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
+            // const SliverPersistentHeader(
+            //   pinned: true,
+            //   floating: false,
+            //   delegate: MyStarBucksFixAppBarWidget(expandedHeight: 200.0),
+            // ),
             SliverGrid(
               delegate: SliverChildBuilderDelegate((context, index) {
                 return Container(

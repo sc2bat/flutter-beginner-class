@@ -10,41 +10,25 @@ class MyStarBucksFixAppBarWidget extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Image.asset(
-          'assets/images/starbucks/00_01_snow.png',
-          fit: BoxFit.cover,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black.withOpacity(0.5),
+    const levelPoint = 0;
+
+    return SliverToBoxAdapter(
+      child: Container(
+        child: Row(
+          children: [
+            Row(
+              children: [
+                Text('testt'),
               ],
             ),
-          ),
-        ),
-        Positioned(
-          child: AppBar(
-            title: const Text(
-              '올해 크리스마스도 역시, 스타벅스 케이크와 함께!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+            Row(
+              children: [
+                Text('testt'),
+              ],
             ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
