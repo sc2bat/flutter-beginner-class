@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
-class MyStarBuckFixAppBarWidget extends StatelessWidget {
-  const MyStarBuckFixAppBarWidget({
-    super.key,
+class MyStarBucksFixAppBarWidget extends SliverPersistentHeaderDelegate {
+  final double expandedHeight;
+
+  const MyStarBucksFixAppBarWidget({
+    required this.expandedHeight,
   });
 
-  final notificationCount = 1;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    const notificationCount = 0;
+
     return SliverAppBar(
       pinned: true,
       floating: false,
@@ -83,5 +86,16 @@ class MyStarBuckFixAppBarWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  double get maxExtent => expandedHeight;
+
+  @override
+  double get minExtent => kToolbarHeight;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
