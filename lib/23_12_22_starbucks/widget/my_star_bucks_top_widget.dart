@@ -16,7 +16,7 @@ class MyStarBucksTopWidget extends SliverPersistentHeaderDelegate {
     double progressValue = currentValue / maxValue;
     int goalValue = (maxValue - currentValue).floor();
 
-    return Row(
+    return Column(
       children: [
         Expanded(
           child: Stack(
@@ -71,17 +71,62 @@ class MyStarBucksTopWidget extends SliverPersistentHeaderDelegate {
             ],
           ),
         ),
-        Row(
-          children: [
-            Text('$goalValue ☆ until Green Level'),
-            Expanded(
-              child: LinearProgressIndicator(
-                value: progressValue,
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 프로그래스 바와 두 번째 텍스트 간격 조절
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '$goalValue ☆ until Green Level',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.black26,
+                          ),
+                        ),
+                        Container(
+                          height: 20.0,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: LinearProgressIndicator(
+                              value: progressValue,
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                Colors.lightGreenAccent,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16.0,
+                  ),
+                  Text(
+                    '${currentValue.floor()}',
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Text(
+                    ' /${maxValue.floor()} ☆',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.black26,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            Text('$currentValue /$maxValue ☆'),
-          ],
-        ),
+            ],
+          ),
+        )
       ],
     );
   }
@@ -90,7 +135,7 @@ class MyStarBucksTopWidget extends SliverPersistentHeaderDelegate {
   double get maxExtent => expandedHeight;
 
   @override
-  double get minExtent => kToolbarHeight;
+  double get minExtent => kToolbarHeight + 30;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

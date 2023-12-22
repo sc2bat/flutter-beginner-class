@@ -27,7 +27,7 @@ class _TopbarWidgetState extends State<TopbarWidget> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              Column(
                 children: [
                   const SizedBox(
                     width: 16.0,
@@ -52,7 +52,7 @@ class _TopbarWidgetState extends State<TopbarWidget> {
                   ),
                 ],
               ),
-              Row(
+              Column(
                 children: [
                   const Icon(
                     Icons.search,

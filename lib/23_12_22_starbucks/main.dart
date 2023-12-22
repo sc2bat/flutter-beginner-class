@@ -20,7 +20,7 @@ class MyStarBucksApp extends StatelessWidget {
             const SliverPersistentHeader(
               pinned: false,
               floating: false,
-              delegate: MyStarBucksTopWidget(expandedHeight: 200.0),
+              delegate: MyStarBucksTopWidget(expandedHeight: 230.0),
             ),
             const MyStarBuckFixAppBarWidget(),
             SliverGrid(
