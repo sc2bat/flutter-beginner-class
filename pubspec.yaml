@@ -73,6 +73,28 @@ flutter:
     - assets/images/youtube/icon-youtube-shorts-512.png
     - assets/images/youtube/icon-youtube-shorts-black-256.png
     - assets/images/youtube/icon-youtube-shorts-black-512.png
+    - assets/images/starbucks/01_01_2023_winter_e-frequency.png
+    - assets/images/starbucks/02_01_siren_order.png   
+    - assets/images/starbucks/03_01_chrismas_event.png
+    - assets/images/starbucks/04_01_cardnews.png      
+    - assets/images/starbucks/04_02_cardnews.png      
+    - assets/images/starbucks/04_03_cardnews.png      
+    - assets/images/starbucks/04_04_cardnews.png      
+    - assets/images/starbucks/04_05_cardnews.png      
+    - assets/images/starbucks/04_06_cardnews.png      
+    - assets/images/starbucks/04_07_cardnews.png      
+    - assets/images/starbucks/04_08_cardnews.png      
+    - assets/images/starbucks/04_09_cardnews.png      
+    - assets/images/starbucks/04_10_cardnews.png      
+    - assets/images/starbucks/04_11_cardnews.png      
+    - assets/images/starbucks/04_12_cardnews.png
+    - assets/images/starbucks/05_01_card.png
+    - assets/images/starbucks/05_02_card.png
+    - assets/images/starbucks/06_01_card.png
+    - assets/images/starbucks/06_02_card.png
+    - assets/images/starbucks/06_03_card.png
+    - assets/images/starbucks/06_04_card.png
+    - assets/images/starbucks/06_05_card.png
   fonts:
   - family: D2Coding
     fonts:
