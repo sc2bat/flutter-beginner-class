@@ -61,6 +61,19 @@ class MyStarBucksApp extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: const BottomNavigationBarWidget(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print('order');
+          },
+          backgroundColor: Colors.lightGreen,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50.0),
+          ),
+          child: const Icon(
+            Icons.motorcycle_outlined,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
