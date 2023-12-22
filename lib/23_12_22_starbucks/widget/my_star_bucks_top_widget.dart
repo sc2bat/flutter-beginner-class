@@ -31,7 +31,7 @@ class MyStarBucksTopWidget extends SliverPersistentHeaderDelegate {
                 children: [
                   Container(
                     width: 260.0,
-                    margin: const EdgeInsets.only(bottom: 50.0),
+                    margin: const EdgeInsets.only(bottom: 10.0),
                     child: const Text(
                       '올해 크리스마스도 역시, 스타벅스 케이크와 함께!',
                       style: TextStyle(
