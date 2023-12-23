@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class MyStopwatchHomePageScreen extends StatefulWidget {
@@ -9,6 +11,28 @@ class MyStopwatchHomePageScreen extends StatefulWidget {
 }
 
 class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
+  Timer? _timer;
+
+  int _time = 0;
+
+  bool _isRunning = false;
+
+  List<String> _lapTimes = [];
+
+  void _clickButton() {
+    _isRunning = !_isRunning;
+    _isRunning ? _start() : _pause();
+  }
+
+  void _start() {}
+  void _pause() {}
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,9 +95,13 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
                 ),
               ),
               FloatingActionButton(
-                onPressed: () {},
-                child: const Icon(
-                  Icons.play_arrow,
+                onPressed: () {
+                  setState(() {
+                    _clickButton();
+                  });
+                },
+                child: Icon(
+                  _isRunning ? Icons.pause : Icons.play_arrow,
                 ),
               ),
               FloatingActionButton(
