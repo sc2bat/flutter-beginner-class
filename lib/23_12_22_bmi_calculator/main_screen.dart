@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_beginer_class/23_12_22_bmi_calculator/result_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -8,6 +9,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +18,9 @@ class _MainScreenState extends State<MainScreen> {
         title: const Text('bmi calculator'),
       ),
       body: Form(
+        key: _formKey,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextFormField(
               decoration: const InputDecoration(
@@ -23,8 +28,10 @@ class _MainScreenState extends State<MainScreen> {
                 hintText: 'height',
               ),
               keyboardType: TextInputType.number,
+              validator: (value) =>
+                  value == null || value.isEmpty ? 'height is empty' : null,
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
             TextFormField(
@@ -33,7 +40,28 @@ class _MainScreenState extends State<MainScreen> {
                 hintText: 'weight',
               ),
               keyboardType: TextInputType.number,
+              validator: (value) =>
+                  value == null || value.isEmpty ? 'weight is empty' : null,
             ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  return;
+                }
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ResultScreen(height: 100.0, weight: 170.0),
+                  ),
+                );
+              },
+              child: const Text('result'),
+            )
           ],
         ),
       ),
