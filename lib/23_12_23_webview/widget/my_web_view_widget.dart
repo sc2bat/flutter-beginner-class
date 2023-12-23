@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:simple_logger/simple_logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -55,6 +57,7 @@ class _MyWebViewWidgetState extends State<MyWebViewWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var isExit = 0;
     return Scaffold(
       appBar: AppBar(
         title: const Text('my webview app'),
@@ -94,35 +97,40 @@ class _MyWebViewWidgetState extends State<MyWebViewWidget> {
           PopScope(
             canPop: false,
             onPopInvoked: (didPop) async {
-              logger.info('뒤로가기');
-              logger.info('qwerasdf $didPop');
-              if (didPop) {
-                return;
-              }
-              final NavigatorState navigator = Navigator.of(context);
-              final bool? shouldPop = await CustomDialog.show(
-                context,
-                WarningDialog(
-                  title: "Are you sure Close?",
-                  content: "This will remove close the application",
-                  confirmText: "Close",
-                  onConfirm: () {
-                    Navigator.pop(context, true);
-                  },
-                  onCancel: () {
-                    Navigator.pop(context, false);
-                  },
-                ),
-              );
-              if (shouldPop ?? false) {
-                SystemNavigator.pop();
-              }
-              // if (await _controller.canGoBack()) {
-              //   await _controller.goBack();
-              // } else {
-              //   return true;
+              // final diffrence = DateTime.now().difference(timeback)
+              // var _isExitWarning = 0;
+              // if(_isExitWarning)
+              // if (didPop) {
+              //   logger.info('didPop $didPop');
+              //   return;
               // }
-              // return false;
+              if (await _controller.canGoBack()) {
+                await _controller.goBack();
+                logger.info('didPop aysnc $didPop goBack');
+                isExit = 0;
+                return;
+                // } else if (await _controller.canGoForward()) {
+                //   await _controller.goForward();
+                //   logger.info('goForward');
+                //   return;
+                // } else {
+                //   logger.info('didPop aysnc $didPop none');
+                //   return;
+              } else {
+                logger.info('flutter toast');
+                Fluttertoast.showToast(
+                  msg: "This is Center Short Toast",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.black54,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+                isExit++;
+                logger.info('flutter toast $isExit');
+              }
+              if (isExit > 2) SystemNavigator.pop();
             },
             child: WebViewWidget(
               controller: _controller,

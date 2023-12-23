@@ -1,0 +1,11 @@
+webview_flutter 4.4.2 :
+https://pub.dev/packages/webview_flutter
+
+WebViewController class :
+https://pub.dev/documentation/webview_flutter/latest/webview_flutter/WebViewController-class.html
+
+PopScope class :
+https://api.flutter.dev/flutter/widgets/PopScope-class.html
+
+github kevin-chela : 
+https://github.com/kevin-chela/webview-flutter-codelab/tree/main/lib/src
