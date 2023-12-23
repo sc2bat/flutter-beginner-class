@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beginer_class/23_12_22_bmi_calculator/result_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -12,6 +13,21 @@ class _MainScreenState extends State<MainScreen> {
   final _formKey = GlobalKey<FormState>();
   final _heightController = TextEditingController();
   final _weightController = TextEditingController();
+
+  @override
+  void dispose() {
+    save();
+    _heightController.dispose();
+    _weightController.dispose();
+
+    super.dispose();
+  }
+
+  Future save() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('height', double.parse(_heightController.text));
+    await prefs.setDouble('weight', double.parse(_weightController.text));
+  }
 
   @override
   Widget build(BuildContext context) {
