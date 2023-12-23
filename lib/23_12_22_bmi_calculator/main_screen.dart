@@ -10,6 +10,8 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _heightController = TextEditingController();
+  final _weightController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextFormField(
+              controller: _heightController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'height',
@@ -35,6 +38,7 @@ class _MainScreenState extends State<MainScreen> {
               height: 8.0,
             ),
             TextFormField(
+              controller: _weightController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'weight',
@@ -48,15 +52,18 @@ class _MainScreenState extends State<MainScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState?.validate() ?? false) {
+                if (_formKey.currentState?.validate() == false) {
                   return;
                 }
+
+                final height = double.parse(_heightController.text);
+                final weight = double.parse(_weightController.text);
 
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        ResultScreen(height: 100.0, weight: 170.0),
+                        ResultScreen(height: height, weight: weight),
                   ),
                 );
               },
