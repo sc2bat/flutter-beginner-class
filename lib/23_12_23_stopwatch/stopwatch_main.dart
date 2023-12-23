@@ -7,9 +7,9 @@ import 'screen/my_stopwatch_home_page_screen.dart';
 
 void main() {
   final logger = SimpleLogger();
-  Timer.periodic(Duration(seconds: 1), (timer) {
-    // logger.info('timer testing');
-  });
+  // Timer.periodic(Duration(seconds: 1), (timer) {
+  // logger.info('timer testing');
+  // });
 
   runApp(const MyStopWatchApp());
 }

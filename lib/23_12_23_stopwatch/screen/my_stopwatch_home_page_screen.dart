@@ -17,15 +17,37 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
 
   bool _isRunning = false;
 
-  List<String> _lapTimes = [];
+  final List<String> _lapTimes = [];
 
   void _clickButton() {
     _isRunning = !_isRunning;
     _isRunning ? _start() : _pause();
   }
 
-  void _start() {}
-  void _pause() {}
+  void _start() {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+      setState(() {
+        _time++;
+      });
+    });
+  }
+
+  void _pause() {
+    setState(() {
+      _timer?.cancel();
+    });
+  }
+
+  void _reset() {
+    _isRunning = false;
+    _timer?.cancel();
+    _lapTimes.clear();
+    _time = 0;
+  }
+
+  void _recordLapTime(String time) {
+    _lapTimes.insert(0, '${_lapTimes.length + 1} 등 $time');
+  }
 
   @override
   void dispose() {
@@ -35,6 +57,9 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int currentSeconds = _time ~/ 100;
+    String currentMilliseconds = '${_time % 100}'.padLeft(2, '0');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('my stopwatch app'),
@@ -48,15 +73,15 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '0',
+                '$currentSeconds',
                 style: const TextStyle(
                   fontSize: 50,
                 ),
               ),
               Text(
-                '00',
+                currentMilliseconds,
                 style: const TextStyle(
-                  fontSize: 30,
+                  fontSize: 20,
                 ),
               ),
             ],
@@ -65,22 +90,7 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
             width: 100.0,
             height: 200.0,
             child: ListView(
-              children: [
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-                Text('3300'),
-              ],
+              children: _lapTimes.map((e) => Center(child: Text(e))).toList(),
             ),
           ),
           const Spacer(),
@@ -88,7 +98,11 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _reset();
+                  });
+                },
                 backgroundColor: Colors.orange,
                 child: const Icon(
                   Icons.refresh,
@@ -105,7 +119,11 @@ class _MyStopwatchHomePageScreenState extends State<MyStopwatchHomePageScreen> {
                 ),
               ),
               FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _recordLapTime('$currentSeconds.$currentMilliseconds');
+                  });
+                },
                 backgroundColor: Colors.green,
                 child: const Icon(
                   Icons.add,
