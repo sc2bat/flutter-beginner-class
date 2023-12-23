@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:simple_logger/simple_logger.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+final logger = SimpleLogger();
 
 class MyWebViewWidget extends StatefulWidget {
   const MyWebViewWidget({super.key});
@@ -40,7 +43,30 @@ class _MyWebViewWidgetState extends State<MyWebViewWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('my webview app'),
+        title: const Text('my webview app'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.add),
+          ),
+          PopupMenuButton<String>(
+            onSelected: (value) => logger.info(value),
+            itemBuilder: (context) => [
+              const PopupMenuItem<String>(
+                value: 'https://www.google.com/',
+                child: Text('google'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'https://www.naver.com/',
+                child: Text('naver'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'https://www.kakaocorp.com/page/',
+                child: Text('kakao'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: WebViewWidget(controller: controller),
     );
