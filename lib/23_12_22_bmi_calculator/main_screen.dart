@@ -15,8 +15,14 @@ class _MainScreenState extends State<MainScreen> {
   final _weightController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    load();
+  }
+
+  @override
   void dispose() {
-    save();
+    // save();
     _heightController.dispose();
     _weightController.dispose();
 
@@ -27,6 +33,16 @@ class _MainScreenState extends State<MainScreen> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setDouble('height', double.parse(_heightController.text));
     await prefs.setDouble('weight', double.parse(_weightController.text));
+  }
+
+  Future load() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final double? height = prefs.getDouble('height');
+    final double? weight = prefs.getDouble('weight');
+
+    _heightController.text = height?.toString() ?? '';
+    _weightController.text = weight?.toString() ?? '';
   }
 
   @override
@@ -74,6 +90,8 @@ class _MainScreenState extends State<MainScreen> {
 
                 final height = double.parse(_heightController.text);
                 final weight = double.parse(_weightController.text);
+
+                save();
 
                 Navigator.push(
                   context,
