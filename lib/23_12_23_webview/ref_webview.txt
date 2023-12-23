@@ -21,3 +21,5 @@ http url 접근허용
 <application
         android:usesCleartextTraffic="true"
 
+WillPopScope is deprecated and shouldn't be used
+Use PopScope instead
