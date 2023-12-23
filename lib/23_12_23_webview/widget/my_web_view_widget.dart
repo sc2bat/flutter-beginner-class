@@ -97,6 +97,7 @@ class _MyWebViewWidgetState extends State<MyWebViewWidget> {
           PopScope(
             canPop: false,
             onPopInvoked: (didPop) async {
+              logger.info('current isExit $isExit');
               // final diffrence = DateTime.now().difference(timeback)
               // var _isExitWarning = 0;
               // if(_isExitWarning)
@@ -119,7 +120,7 @@ class _MyWebViewWidgetState extends State<MyWebViewWidget> {
               } else {
                 logger.info('flutter toast');
                 Fluttertoast.showToast(
-                  msg: "This is Center Short Toast",
+                  msg: "Press again to exit",
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 1,
