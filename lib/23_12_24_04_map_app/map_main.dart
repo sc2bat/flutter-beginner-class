@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'screen/my_map_home_page_screen.dart';
 
 void main() {
-  runApp(MyMapApp());
+  runApp(const MyMapApp());
 }
 
 class MyMapApp extends StatelessWidget {
