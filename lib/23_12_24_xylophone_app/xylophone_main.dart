@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'screen/my_xylophone_home_page_screen.dart';
 
 void main() {
-  runApp(MyXylophoneApp());
+  runApp(const MyXylophoneApp());
 }
 
 class MyXylophoneApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyXylophoneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'my xylophone app',
       home: MyXylophoneHomePageScreen(),
     );
