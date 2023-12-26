@@ -277,41 +277,85 @@ class _RouteMainScreenState extends State<RouteMainScreen> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState?.validate() == false) {
-                      return;
-                    }
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState?.validate() == false) {
+                            return;
+                          }
 
-                    final height = double.parse(_heightController.text);
-                    final weight = double.parse(_weightController.text);
+                          final height = double.parse(_heightController.text);
+                          final weight = double.parse(_weightController.text);
 
-                    save();
+                          save();
 
-                    DateTime now = DateTime.now();
-                    int age = now.year - selectedYear;
+                          DateTime now = DateTime.now();
+                          int age = now.year - selectedYear;
 
-                    if (now.month < selectedMonth ||
-                        (now.month == selectedMonth && now.day < selectedDay)) {
-                      age--;
-                    }
+                          if (now.month < selectedMonth ||
+                              (now.month == selectedMonth &&
+                                  now.day < selectedDay)) {
+                            age--;
+                          }
 
-                    final personInfo = PersonInfo(
-                        age: age,
-                        gender: selectedGender,
-                        height: height,
-                        weight: weight);
+                          final personInfo = PersonInfo(
+                              age: age,
+                              gender: selectedGender,
+                              height: height,
+                              weight: weight);
 
-                    context.push(
-                      Uri(
-                        path: '/resultCalc',
-                        queryParameters: {
-                          'personInfo': jsonEncode(personInfo.toJson())
+                          context.push(
+                            Uri(
+                              path: '/resultCalc',
+                              queryParameters: {
+                                'personInfo': jsonEncode(personInfo.toJson())
+                              },
+                            ).toString(),
+                          );
                         },
-                      ).toString(),
-                    );
-                  },
-                  child: const Text('result'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green[300],
+                        ),
+                        child: const Text(
+                          'result',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 32.0,
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _heightController.text = '';
+                          _weightController.text = '';
+
+                          setState(() {
+                            selectedYear = DateTime.now().year;
+                            selectedMonth = DateTime.now().month;
+                            selectedDay = DateTime.now().day;
+                            selectedGender = 'male';
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                        ),
+                        child: const Text(
+                          'reset',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
