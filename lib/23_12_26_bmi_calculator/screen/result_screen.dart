@@ -59,6 +59,12 @@ class RouteResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
+              '${personInfo.gender == 'male' ? '남자' : '여자'} 만 ${personInfo.age} 세',
+              style: const TextStyle(
+                fontSize: 36,
+              ),
+            ),
+            Text(
               _bmiResultString(bmi),
               style: const TextStyle(
                 fontSize: 36,
