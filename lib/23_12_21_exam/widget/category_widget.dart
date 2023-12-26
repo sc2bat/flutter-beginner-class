@@ -23,7 +23,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         Row(
           children: [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 height: 60,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,

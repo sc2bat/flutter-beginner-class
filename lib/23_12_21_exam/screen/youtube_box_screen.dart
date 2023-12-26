@@ -1,9 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_beginer_class/23_12_21_exam/model/youtube_video.dart';
 import 'package:flutter_beginer_class/23_12_21_exam/repository/user_repository.dart';
 import 'package:flutter_beginer_class/23_12_21_exam/repository/video_repository.dart';
 

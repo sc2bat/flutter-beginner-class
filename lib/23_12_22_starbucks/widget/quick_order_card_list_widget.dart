@@ -17,7 +17,7 @@ class _QuickOrderCardListWidgetState extends State<QuickOrderCardListWidget> {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Container(
+      child: SizedBox(
         height: 200.0,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -25,32 +25,30 @@ class _QuickOrderCardListWidgetState extends State<QuickOrderCardListWidget> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: 340.0,
                 child: Card(
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                orders[index].liked =
-                                    orders[index].liked == 1 ? 0 : 1;
-                              });
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Icon(
-                                  orders[index].liked == 1
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: Colors.black54,
-                                ),
-                              ],
-                            ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              orders[index].liked =
+                                  orders[index].liked == 1 ? 0 : 1;
+                            });
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(
+                                orders[index].liked == 1
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.black54,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -116,7 +114,7 @@ class _QuickOrderCardListWidgetState extends State<QuickOrderCardListWidget> {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                print('press button');
+                                // print('press button');
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.black,

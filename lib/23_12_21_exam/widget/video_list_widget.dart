@@ -60,7 +60,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
       itemCount: youtubeVideos.length,
       itemBuilder: (context, index) {
         return index == shortIndex
-            ? Container(
+            ? SizedBox(
                 height: 370,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -68,7 +68,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                   itemBuilder: ((context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
+                      child: SizedBox(
                         width: 200,
                         child: Stack(
                           children: [
@@ -95,7 +95,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                                 children: [
                                   Row(
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         width: 180,
                                         child: Text(
                                           youtubeShorts[index].title,

@@ -53,14 +53,13 @@ class _VideoListWidgetState extends State<VideoListWidget> {
     Random random = Random();
     final youtubeVideos = widget.videos..shuffle(random);
     final youtubeShorts = widget.shorts..shuffle(random);
-    int shortIndex = random.nextInt(youtubeVideos.length);
 
     return ListView.builder(
       scrollDirection: Axis.vertical,
       itemCount: youtubeVideos.length,
       itemBuilder: (context, index) {
         return index == 1
-            ? Container(
+            ? SizedBox(
                 height: 400,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -68,7 +67,7 @@ class _VideoListWidgetState extends State<VideoListWidget> {
                   itemBuilder: ((context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
+                      child: SizedBox(
                         width: 200,
                         child: Stack(
                           children: [

@@ -62,7 +62,7 @@ class MyStarBucksApp extends StatelessWidget {
         bottomNavigationBar: const BottomNavigationBarWidget(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print('order');
+            // print('order');
           },
           backgroundColor: Colors.lightGreen,
           shape: RoundedRectangleBorder(

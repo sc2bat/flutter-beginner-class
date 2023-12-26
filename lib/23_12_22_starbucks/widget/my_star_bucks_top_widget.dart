@@ -90,7 +90,7 @@ class MyStarBucksTopWidget extends SliverPersistentHeaderDelegate {
                             color: Colors.black26,
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 20.0,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10.0),

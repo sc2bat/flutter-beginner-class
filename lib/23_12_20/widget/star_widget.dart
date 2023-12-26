@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_beginer_class/23_12_20/model/star.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
-import '../service/get_random_color.dart';
 
 class StarWidget extends StatefulWidget {
   final Star star;

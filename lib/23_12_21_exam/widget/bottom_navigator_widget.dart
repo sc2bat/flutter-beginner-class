@@ -13,7 +13,7 @@ class BottomNavigatorWidget extends StatefulWidget {
 }
 
 class _BottomNavigatorWidgetState extends State<BottomNavigatorWidget> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +69,5 @@ class _BottomNavigatorWidgetState extends State<BottomNavigatorWidget> {
         builder: (context) => YoutubeDumpScreen(selectIndex: index),
       ),
     );
-  }
-
-  void _onExploreTapped() {
-    // Handle tap action for Explore
-    print('Explore tapped!');
   }
 }

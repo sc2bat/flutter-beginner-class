@@ -16,7 +16,7 @@ class _NewsCardListWidgetState extends State<NewsCardListWidget> {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Container(
+      child: SizedBox(
         height: 300.0,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -24,7 +24,7 @@ class _NewsCardListWidgetState extends State<NewsCardListWidget> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: 300.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
